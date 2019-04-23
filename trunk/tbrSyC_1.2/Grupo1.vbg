@@ -1,0 +1,3 @@
+VBGROUP 5.0
+StartupProject=tbrStocknCash.vbp
+Project=..\DLLS\tbrContabilidadPrueba\tbrPruebaCont.vbp
