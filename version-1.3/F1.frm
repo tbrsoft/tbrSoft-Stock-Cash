@@ -64,16 +64,9 @@ Private Sub Form_Load()
     If Right(AP, 1) <> "\" Then AP = AP + "\"
     
     Terr.FileLog = AP + "regSyc.log"
-    
-    If Command = "e1" Then
-        Terr.FileLogGrabaTodo = AP + "REG-SyC.W15"
-        Terr.ModoGrabaTodo = True
-        Terr.StartGrabaTodo
-    End If
-    
     Terr.LargoAcumula = 600
     
-    Terr.AnOtaR "aaaa"
+    Terr.AppendLog "aaaa", AP
     
     frAll.Width = Image1.Width
     frAll.Height = Image1.Height
@@ -84,25 +77,19 @@ Private Sub Form_Load()
     Me.Width = frAll.Width
     Me.Height = frAll.Height
     
-    Terr.AnOtaR "aaaa44"
     Dim DifStk As Single, RFyT As Single, AjustesStock As Single, IDcierre As Long
     Dim FSO As New FileSystemObject
     Dim MovSB 'lo que cambia por c/proceso el show bar
     
-    Terr.AppendSinHist "aaab" + vbCrLf + _
-        CStr(App.Major) + "." + CStr(App.Minor) + "." + CStr(App.Revision) + vbCrLf + _
-        AP
-    
-    Terr.AnOtaR "aaaa45"
+    Terr.AppendLog "aaab"
+        
     WF = FSO.GetSpecialFolder(WindowsFolder)
     If Right(WF, 1) <> "\" Then WF = WF + "\"
     
-    Terr.AnOtaR "aaaa46"
     frAll.Visible = True
     Me.Show
     Me.Refresh
     
-    Terr.AnOtaR "aaaa47"
     shBAR.Width = 200
     shBAR.Refresh
     
@@ -111,18 +98,18 @@ Private Sub Form_Load()
     LIC.PutArchLic WF + "klesoft.tes"
     'si no existe no importa, no le da bola
     
-    Terr.AnOtaR "aaac"
+    Terr.AppendLog "aaac"
     
     'ACCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ACC.DBFilename2 = AP + "acc.moe"
     ACC.Conectar
     
-    Terr.AnOtaR "aaad"
+    Terr.AppendLog "aaad"
     Dim TTT As Long
     
     TTT = ACC.ValidarUsuario(5)
     
-    Terr.AnOtaR "aaae", TTT
+    Terr.AppendLog "aaae", TTT
     
     If TTT < 0 Then
         If TTT = -1 Then MsgBox "Se cerrará el sistema por falta de validación", vbCritical, "Atención"
@@ -186,7 +173,7 @@ Private Sub Form_Load()
 '    End If
 '    '---------------------------------------------------------------------------------
     
-    Terr.AnOtaR "aaag"
+    Terr.AppendLog "aaag"
     ControlarBD
     
     shBAR.Width = 700
@@ -195,23 +182,23 @@ Private Sub Form_Load()
     
     'BASE DE DATOS!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ArchivoMDBPrincipal = CFGBD.GetInfo(80, 4) + "dmbou.dv"
-    Terr.AnOtaR "aaah", ArchivoMDBPrincipal
+    Terr.AppendLog "aaah", ArchivoMDBPrincipal
     Contrasena = "chapita15"
     
     DB.cn_CONECTAR_MDB ArchivoMDBPrincipal, Contrasena
     
-    Terr.AnOtaR "aaai"
+    Terr.AppendLog "aaai"
     'CONTABILIDAD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     PC.ArchMDB = CFGBD.GetInfo(81, 4) + "Ctas.mdb"
     PC.PSW = "zuliani"
-    Terr.AnOtaR "aaai44"
+    
     PC.Conectar
-    Terr.AnOtaR "aaaj"
+    Terr.AppendLog "aaaj"
     ' TIPO USUARIO Servidor o Cliente -----------------------------------------------
     Dim TmP As String, IdCF As String
     
     IdCF = CFG.ExistePropiedadID(90)
-    Terr.AnOtaR "aaak", IdCF
+    Terr.AppendLog "aaak", IdCF
     
     If IdCF = "" Then
         TmP = "Servidor"
@@ -225,7 +212,7 @@ Private Sub Form_Load()
     End If
     
     TipoUsuario = TmP
-    Terr.AnOtaR "aaal", TmP
+    Terr.AppendLog "aaal", TmP
     '--------------------------------------------------------------------------------
 
     shBAR.Width = 900
@@ -236,7 +223,7 @@ Private Sub Form_Load()
     ' ------------------------------------------------------------------------------
     ' HAGO EL BACK UP? -------------------------------------------------------------
     Dim UltBUp() As String
-    Terr.AnOtaR "aaam"
+    Terr.AppendLog "aaam"
     UltBUp = Split(CFG.GetInfo(18, 4), "_")
     
     If Not IsDate(UltBUp(1)) Then
@@ -246,11 +233,11 @@ Private Sub Form_Load()
     If Not IsNumeric(UltBUp(0)) Then
         UltBUp(0) = "5"
     End If
-    Terr.AnOtaR "aaan"
+    Terr.AppendLog "aaan"
     If Date > ProximoMes(CDate(UltBUp(1))) Then 'paso mas de 1 mes
         
         If CLng(UltBUp(0)) >= 1 And CLng(UltBUp(0)) <= 30 Then
-            Terr.AnOtaR "aaao"
+            Terr.AppendLog "aaao"
             If MsgBox("Ya ha pasado más de un mes sin realizar Backup." + vbCrLf + _
                 "¿Desea realizarlo ahora?", vbYesNo, "Atención") = vbNo Then
                 If MsgBox("¿Desea que se le recuerde nuevamente?.", _
@@ -259,30 +246,30 @@ Private Sub Form_Load()
                     
                     CFG.ModificarNodo 18, , , , "32_" + CStr(Date)
                 Else
-                    Terr.AnOtaR "aaap"
+                    Terr.AppendLog "aaap"
                     'nada!, le va a volvera a romper las bolas la proxima
                 End If
             Else
-                Terr.AnOtaR "aaaq"
+                Terr.AppendLog "aaaq"
                 HacerCopiaSeguridadEs
-                Terr.AnOtaR "aaar"
+                Terr.AppendLog "aaar"
                 CFG.ModificarNodo 18, , , , UltBUp(0) + "_" + CStr(Date)
             End If
         Else
-            Terr.AnOtaR "aaas"
+            Terr.AppendLog "aaas"
             'nada por que tiene elegido no hacer bups
         End If
         
     Else 'no paso 1 mes
-        Terr.AnOtaR "aaat"
+        Terr.AppendLog "aaat"
         'solo pregunto si hoy es el dia que corresponde
         If Day(Date) = CLng(UltBUp(0)) And Date <> CDate(UltBUp(1)) Then
             
             If MsgBox("Hoy le correspondería hacer el Backup." + vbCrLf + _
                 "¿Desea realizarlo?", vbInformation + vbYesNo) = vbYes Then
-                Terr.AnOtaR "aaau"
+                Terr.AppendLog "aaau"
                 HacerCopiaSeguridadEs
-                Terr.AnOtaR "aaav"
+                Terr.AppendLog "aaav"
                 CFG.ModificarNodo 18, , , , UltBUp(0) + "_" + CStr(Date)
             End If
         End If
@@ -303,17 +290,17 @@ Private Sub Form_Load()
         shBAR.Width = shBAR.Width + MovSB / 3
         shBAR.Refresh
     Loop
-    Terr.AnOtaR "aaaw"
+    Terr.AppendLog "aaaw"
     If FSO.FolderExists(CFGBD.GetInfo(82, 4) + "IMG\") = False Then
         FSO.CreateFolder CFGBD.GetInfo(82, 4) + "IMG\"
     End If
-    Terr.AnOtaR "aaax"
+    Terr.AppendLog "aaax"
 fin:
     Set FSO = Nothing
     Unload Me
     Unload frmWAIT
     fIni.Show
-    Terr.AnOtaR "aaay"
+    Terr.AppendLog "aaay"
     Exit Sub
     
 ErrLoad:
@@ -491,4 +478,3 @@ Private Function LeerFecha() As String
     Set FSO = Nothing
     Set TE = Nothing
 End Function
-

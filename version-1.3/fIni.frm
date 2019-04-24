@@ -22,38 +22,16 @@ Begin VB.Form fIni
    ScaleHeight     =   7815
    ScaleWidth      =   11760
    StartUpPosition =   2  'CenterScreen
-   Begin VB.PictureBox pFONDO 
-      BackColor       =   &H00000000&
-      BorderStyle     =   0  'None
-      Height          =   555
-      Left            =   9180
-      ScaleHeight     =   555
-      ScaleWidth      =   1305
-      TabIndex        =   26
-      Top             =   5880
-      Visible         =   0   'False
-      Width           =   1305
-   End
    Begin VB.Frame frmSub 
-      BackColor       =   &H00404040&
+      BackColor       =   &H00F5F1EB&
       Caption         =   "Seleccione la opción"
-      BeginProperty Font 
-         Name            =   "Trebuchet MS"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
       Height          =   5955
       Left            =   3240
       TabIndex        =   10
       Top             =   270
       Width           =   2955
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -64,7 +42,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   12
          Left            =   100
@@ -73,7 +50,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -84,7 +61,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   11
          Left            =   100
@@ -93,7 +69,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -104,7 +80,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   10
          Left            =   100
@@ -113,7 +88,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -124,7 +99,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   9
          Left            =   100
@@ -133,7 +107,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -144,7 +118,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   8
          Left            =   100
@@ -153,7 +126,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -164,7 +137,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   7
          Left            =   100
@@ -173,7 +145,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -184,7 +156,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   6
          Left            =   100
@@ -193,7 +164,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -204,7 +175,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   5
          Left            =   100
@@ -213,7 +183,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -224,7 +194,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   4
          Left            =   100
@@ -233,7 +202,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -244,7 +213,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   3
          Left            =   100
@@ -254,7 +222,7 @@ Begin VB.Form fIni
       End
       Begin VB.Label lblSub 
          Appearance      =   0  'Flat
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -265,7 +233,7 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
+         ForeColor       =   &H80000008&
          Height          =   315
          Index           =   2
          Left            =   100
@@ -274,7 +242,7 @@ Begin VB.Form fIni
          Width           =   2680
       End
       Begin VB.Label lblSub 
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -285,7 +253,6 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   1
          Left            =   100
@@ -295,7 +262,7 @@ Begin VB.Form fIni
       End
       Begin VB.Label lblSub 
          Appearance      =   0  'Flat
-         BackColor       =   &H00404040&
+         BackColor       =   &H00F5F1EB&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
@@ -306,7 +273,7 @@ Begin VB.Form fIni
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
+         ForeColor       =   &H80000008&
          Height          =   315
          Index           =   0
          Left            =   100
@@ -317,18 +284,8 @@ Begin VB.Form fIni
    End
    Begin VB.Frame frMenu 
       Appearance      =   0  'Flat
-      BackColor       =   &H00000000&
-      Caption         =   "Menu tbrSoft Stock Cash"
-      BeginProperty Font 
-         Name            =   "Trebuchet MS"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
+      BackColor       =   &H00E6DFD5&
+      ForeColor       =   &H80000008&
       Height          =   7005
       Left            =   270
       TabIndex        =   2
@@ -344,18 +301,17 @@ Begin VB.Form fIni
          Width           =   375
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Números del Día"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   7
          Left            =   735
@@ -364,19 +320,17 @@ Begin VB.Form fIni
          Width           =   1995
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Configuraciones"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   6
          Left            =   650
@@ -394,19 +348,17 @@ Begin VB.Form fIni
          Width           =   380
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Contabilidad"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   5
          Left            =   650
@@ -424,19 +376,17 @@ Begin VB.Form fIni
          Width           =   380
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Socios y Empleados"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   4
          Left            =   650
@@ -454,19 +404,17 @@ Begin VB.Form fIni
          Width           =   380
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Proveedores"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   3
          Left            =   650
@@ -484,19 +432,17 @@ Begin VB.Form fIni
          Width           =   380
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Clientes"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   2
          Left            =   650
@@ -514,19 +460,17 @@ Begin VB.Form fIni
          Width           =   380
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Productos"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   1
          Left            =   650
@@ -553,19 +497,17 @@ Begin VB.Form fIni
          Width           =   380
       End
       Begin VB.Label lblMenu 
-         BackColor       =   &H00000000&
-         BackStyle       =   0  'Transparent
+         BackColor       =   &H00E6DFD5&
          Caption         =   "Sistema"
          BeginProperty Font 
             Name            =   "Trebuchet MS"
-            Size            =   9.75
+            Size            =   11.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFFFF&
          Height          =   375
          Index           =   0
          Left            =   650
@@ -575,23 +517,20 @@ Begin VB.Form fIni
       End
    End
    Begin VB.Label lblDetalle 
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
       BeginProperty Font 
          Name            =   "Trebuchet MS"
-         Size            =   12
+         Size            =   9.75
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   330
+      Height          =   1755
       Left            =   6300
       TabIndex        =   24
       Top             =   360
-      Width           =   75
+      Width           =   4935
    End
    Begin VB.Label lblLicencia 
       BackColor       =   &H00DAD8D8&
@@ -639,10 +578,9 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
- Dim IndiceSub As Integer
+Dim IndiceSub As Integer
 
 Private Sub Form_Activate()
-    Terr.AnOtaR "abfm"
     'calculo movimientos!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     'LOS VOY CALCULANDO CADA VEZ QUE HAGO CAMBIO NOMAS CON VARIABLES GLOBALES
     AjustesStock = PC.ABSSumarconSubcuentas(35, False)
@@ -656,8 +594,6 @@ Private Sub Form_Activate()
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
-    
-    Terr.AnOtaR "abcp", KeyCode
     Select Case KeyCode
         Case vbKeyEscape
             frmSub.Width = 0
@@ -665,7 +601,6 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
             IndiceSub = 50
         
         Case vbKeyF1
-            Terr.AnOtaR "abcq"
             MenuPrincipal 2, 0
             
         Case vbKeyF2
@@ -733,10 +668,6 @@ Private Sub Form_Load()
     QueLicenciaTengo
     
     frmSub.Width = 0
-    
-    Dim FSO As New Scripting.FileSystemObject
-    pFONDO.AutoSize = True
-    If FSO.FileExists(AP + "\fondos\f1.jpg") Then pFONDO.Picture = LoadPicture(AP + "\fondos\f1.jpg")
     
 End Sub
             
@@ -889,16 +820,11 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-    On Local Error GoTo errFIN
-    Terr.AnOtaR "abfh"
-    'solo si estaba grabando a full lo paro
-    If Command = "e1" Then Terr.StopGrabaTodo
-    
+
     LimpiarMovProdViejos 'limpia del  historial de mov de productos s/config
     If Not IsNumeric(CFG.GetInfo(16, 4)) Then
         CFG.ModificarNodo 16, , , , "30"
     End If
-    
     
     ACC.LimpiarMov CLng(CFG.GetInfo(16, 4))
     
@@ -907,18 +833,12 @@ Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     DB.CN_CLOSE
     PC.CN_CLOSE
     
-    
     Set CFG = Nothing
     Set CFGBD = Nothing
     Set ACC = Nothing
     Set DB = Nothing
     Set PC = Nothing
     Set TP = Nothing
-    
-    Exit Sub
-errFIN:
-    Terr.AppendLog "fn029", Terr.ErrToTXT(Err)
-    Resume Next
 End Sub
 
 Private Sub Form_Resize()
@@ -931,12 +851,6 @@ Private Sub Form_Resize()
     End If
     
     AjustarTamano
-    
-    'poner fondo
-    On Local Error Resume Next
-    Me.AutoRedraw = True
-    Me.PaintPicture pFONDO.Picture, 50, 50, Me.Width - 300, Me.Height - 300, 0, 0, pFONDO.Width, pFONDO.Height
-    
 End Sub
 
 Private Sub AjustarTamano()
@@ -1055,28 +969,21 @@ Private Sub LlenarDetalle(Indice As Integer, SubIndice As Integer)
     Dim TT As String
     
     If SubIndice < 20 Then 'cuando uso el procedimiento para limpiar es > 20
-        TT = "  " + UCase(lblSub(SubIndice).Caption) + vbCrLf + vbCrLf
+        TT = "    " + UCase(lblSub(SubIndice).Caption) + vbCrLf + vbCrLf
         lblDetalle.BackColor = frmSub.BackColor
-        'lblDetalle.BorderStyle = 1
+        lblDetalle.BorderStyle = 1
     Else
         TT = ""
         lblDetalle.BackColor = Me.BackColor
-        'lblDetalle.BorderStyle = 0
+        lblDetalle.BorderStyle = 0
     End If
     
     Select Case Indice
         Case 0
             Select Case SubIndice
                 Case 0
-                    TT = TT + "Se utiliza para Administrar " + vbCrLf + _
-                              "permisos para distintas funciones " + vbCrLf + _
-                              "del programa"
-                Case 1
-                    TT = TT + "Cierra secion del usuario actual " + vbCrLf + _
-                              "para iniciar otra "
-                              
-                Case 2
-                    TT = TT + "Cambia la contraseña del usuario actual "
+                    TT = TT + "Se utiliza para Administrar permisos para distintas funciones del  " + _
+                        "programa"
                 Case 1
                 
             End Select
@@ -1089,10 +996,6 @@ Private Sub LlenarDetalle(Indice As Integer, SubIndice As Integer)
 End Sub
 
 Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
-    
-    On Local Error GoTo errMP
-    
-    Terr.AnOtaR "abcr", Indice, SubIndice
     Dim TmP As Long, sTmp As String, F As String
     Dim Usuario As String, UUs As Long, tmpRp As Long
     Dim IdCli As Long
@@ -1137,7 +1040,6 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
                     UUs = ACC.UltUsuarioIngresado
                     tmpRp = ACC.CambiarContrasena(UUs)
                     
-                    Terr.AnOtaR "abcs", UUs, tmpRp
                     Select Case tmpRp
                         Case 0
                             MsgBox "Contraseña Modificada correctamente", vbInformation, "Cambio Contraseña"
@@ -1153,13 +1055,11 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
                         MsgBox "Su Licencia no le permite utilizar esta función del Sistema", _
                             vbInformation, "Atención"
                     Else
-                        Terr.AnOtaR "abct"
                         ACC.MostrarMovimientos
                     End If
                 Case 4 '...........................................................................
                     If EstaHabilitado(18, "Ingreso a Limpieza Base de Datos") > 0 Then
                         Shell AP + "limpiezabasededatos.exe", vbNormalFocus
-                        Terr.AnOtaR "abcu"
                         Unload Me
                         End
                     End If
@@ -1168,7 +1068,6 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
                         MsgBox "Su Licencia no le permite utilizar esta función del Sistema", _
                             vbInformation, "Atención"
                     Else
-                        Terr.AnOtaR "abcv"
                         frmExportPV.Show 1
                     End If
                 Case 6 '...........................................................................
@@ -1273,14 +1172,12 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
         Case 2 'CLIENTES --------------------------------------------------------------------
             Select Case SubIndice
                 Case 0
-                    Terr.AnOtaR "abcm"
                     'primero que todo veo si hay productos
                     If DB.ContarReg("select nproducto from Productos") = 0 Then
                         MsgBox "No hay productos cargados en la base de datos, solucione este problema " + _
                             "y luego ingrese las ventas", vbInformation, "Atención"
                         Exit Sub
                     End If
-                    Terr.AnOtaR "abcn"
                     frmVENTAS.Show 1
                 Case 1
                     frmAnularV.Show 1
@@ -1352,7 +1249,6 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
                     If DB.ContarReg("SELECT nProducto FROM Productos") = 0 Then
                         MsgBox "No hay productos cargados en la base de datos, solucione este problema " + _
                             "y luego ingrese las compras", vbInformation, "Atención"
-                        Terr.AppendSinHist "NohayProd"
                         Exit Sub
                     End If
                     
@@ -1360,11 +1256,9 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
                     If DB.ContarReg("select proveedor from Proveedores") = 0 Then
                         MsgBox "No hay Proveedores cargados en la base de datos, solucione este problema " + _
                             "y luego ingrese las compras", vbInformation, "Atención"
-                        Terr.AppendSinHist "NohayProv"
                         Exit Sub
                     End If
                     
-                    Terr.AnOtaR "caaa"
                     frmCompras.AbrirDatos
                 
                 Case 1
@@ -1551,9 +1445,5 @@ Private Sub MenuPrincipal(Indice As Integer, SubIndice As Integer)
     Set FSO = Nothing
     Set CM = Nothing
     
-    Exit Sub
-errMP:
-    Terr.AppendLog "errMP", Terr.ErrToTXT(Err)
-    Resume Next
 End Sub
 

@@ -446,11 +446,6 @@ Public Sub VER(fOfertas As String, Optional DesdeArt As Long = -1)
             End If
         End If
         
-        'si hay solo 1 productyo es cero !!! y da error
-        If UBound(SP) = 0 Then
-            MsgBox "Hay solo 1 producto, utilize al menos 2"
-            Exit Sub
-        End If
         For J = INI_OF To UBound(SP)
         
             fBAR.Width = ((J - INI_OF) / (UBound(SP) - INI_OF)) * Frame1.Width
@@ -484,15 +479,15 @@ Public Sub VER(fOfertas As String, Optional DesdeArt As Long = -1)
         
         fBAR.Width = (J / UBound(OF)) * Frame1.Width
         
-        Load IM(J)
+        Load Im(J)
         Load lbNAME(J)
         Load lbPrecio(J)
         Load lbDesc(J)
         Load lbOBS(J)
         Load PIC2(J)
         
-        IM(J).Width = OF(J).Ancho / 2
-        IM(J).Height = OF(J).Alto - lbNAME(J).Height - lbOBS(J).Height
+        Im(J).Width = OF(J).Ancho / 2
+        Im(J).Height = OF(J).Alto - lbNAME(J).Height - lbOBS(J).Height
         
         lbNAME(J).Caption = OF(J).Nombre
         If OF(J).Precio > 0 Then
@@ -509,24 +504,24 @@ Public Sub VER(fOfertas As String, Optional DesdeArt As Long = -1)
             
         lbOBS(J).Caption = OF(J).Observaciones
         
-        IM(J).Left = MargenLat + Separador + ((PosX - 1) * (OF(J).Ancho + Separador))
+        Im(J).Left = MargenLat + Separador + ((PosX - 1) * (OF(J).Ancho + Separador))
         lbNAME(J).Left = MargenLat + Separador + (PosX - 1) * (OF(J).Ancho + Separador)
         lbPrecio(J).Left = MargenLat + Separador + ((PosX - 1) * (OF(J).Ancho + Separador)) + (OF(J).Ancho / 2)
         lbDesc(J).Left = lbPrecio(J).Left
         lbOBS(J).Left = lbNAME(J).Left
         
-        IM(J).Top = MargenSup + Separador + ((PosY - 1) * (OF(J).Alto + Separador)) + lbNAME(J).Height
+        Im(J).Top = MargenSup + Separador + ((PosY - 1) * (OF(J).Alto + Separador)) + lbNAME(J).Height
         lbNAME(J).Top = MargenSup + Separador + ((PosY - 1) * (OF(J).Alto + Separador))
         lbPrecio(J).Top = lbNAME(J).Top + lbNAME(J).Height
         lbDesc(J).Top = lbPrecio(J).Top + lbPrecio(J).Height
-        lbOBS(J).Top = IM(J).Top + IM(J).Height + 60
+        lbOBS(J).Top = Im(J).Top + Im(J).Height + 60
         
         lbNAME(J).Width = OF(J).Ancho
         lbPrecio(J).Width = lbNAME(J).Width / 2
         lbDesc(J).Width = lbNAME(J).Width / 2
         lbOBS(J).Width = OF(J).Ancho
         
-        IM(J).Visible = True
+        Im(J).Visible = True
         lbNAME(J).Visible = True
         lbPrecio(J).Visible = True
         lbDesc(J).Visible = True
@@ -542,12 +537,12 @@ Public Sub VER(fOfertas As String, Optional DesdeArt As Long = -1)
             Dim Prop As Single
             Prop = Stp.Width / Stp.Height
                             
-            Ancho = IM(J).Width
+            Ancho = Im(J).Width
             Alto = Ancho / Prop
             
-            If Alto > IM(J).Height Then
-                Alto = IM(J).Height
-                Ancho = IM(J).Width * Prop
+            If Alto > Im(J).Height Then
+                Alto = Im(J).Height
+                Ancho = Im(J).Width * Prop
             End If
             
             'PIC2(J).PaintPicture STP, IM(J).Width / 2 - Ancho / 2, _
@@ -563,8 +558,8 @@ Public Sub VER(fOfertas As String, Optional DesdeArt As Long = -1)
 '            PIC2(J).Top = IM(J).Top + (IM(J).Height / 2 - Alto / 2)
 '            PIC2(J).Visible = True
 '            PIC2(J).ZOrder
-            picPrint.PaintPicture Stp, IM(J).Left + (IM(J).Width / 2 - Ancho / 2), _
-                IM(J).Top + (IM(J).Height / 2 - Alto / 2), _
+            picPrint.PaintPicture Stp, Im(J).Left + (Im(J).Width / 2 - Ancho / 2), _
+                Im(J).Top + (Im(J).Height / 2 - Alto / 2), _
                 Ancho, Alto
         End If
         
@@ -779,7 +774,7 @@ Private Sub Limpiar()
     picPrint.Cls
     Dim J As Long
     For J = lbNAME.Count - 1 To 1 Step -1
-        Unload IM(J)
+        Unload Im(J)
         Unload lbNAME(J)
         Unload lbPrecio(J)
         Unload lbDesc(J)

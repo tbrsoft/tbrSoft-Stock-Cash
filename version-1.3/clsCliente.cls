@@ -226,11 +226,6 @@ DeGuelta:
             
         End If
         
-        'SEGUIRAQUI
-        'LA BASE DE DATOS ATERIOR AL 26/03/09 el detalle es campo de texto 50
-        'ahora la cambie a memo
-        'If Len(Detalle) > 49 Then Detalle = Left(Detalle, 49)
-        
         DB.EXECUTE "UPDATE Clientes SET Nombre = '" + mNombre + "', " + _
             "Detalle = '" + NoNuloS(mDetalle) + "', " + _
             "Direccion = '" + NoNuloS(mDireccion) + "', " + _
@@ -249,8 +244,7 @@ ErrDuplic:
     If Err.Number = -2147467259 Then
         GoTo DeGuelta
     Else
-        MsgBox CStr(Err.Number) + ": " + CStr(Err.Description)
-        Resume Next
+        MsgBox Err.Number + ": " + Err.Description
     End If
 End Function
 

@@ -487,7 +487,7 @@ Begin VB.Form frmLimpieza
       Height          =   375
       Left            =   4110
       TabIndex        =   37
-      Top             =   3240
+      Top             =   3210
       Width           =   4905
    End
    Begin VB.Label Label4 
@@ -697,7 +697,7 @@ End Sub
 Private Sub cmdBackUp_Click(Index As Integer)
     Dim Resp As Long
     
-    If FSO.FolderExists(lblFldBackups.Caption) = False Then
+    If FSO.FolderExists(lblFldBackups) = False Then
         MsgBox "Seleccione una carpeta correcta a donde se grabará el backup", vbInformation, "Atención"
         Exit Sub
     End If
@@ -708,13 +708,13 @@ Private Sub cmdBackUp_Click(Index As Integer)
     
     Select Case Index
         Case 0 'principal
-            Resp = DB.Backup(lblUbicBDP + "dmbou.dv", lblFldBackups.Caption)
-            Resp = DB.Backup(lblUbicBDP + "config.abl", lblFldBackups.Caption)
+            Resp = DB.Backup(lblUbicBDP + "dmbou.dv", lblFldBackups)
+            Resp = DB.Backup(lblUbicBDP + "config.abl", lblFldBackups)
             Resp = DB.Backup(AP + "configBD.abl", lblFldBackups)
         Case 1 'contabilidad
-            Resp = DB.Backup(lblUbicBDC + "ctas.mdb", lblFldBackups.Caption)
+            Resp = DB.Backup(lblUbicBDC + "ctas.mdb", lblFldBackups)
         Case 2 'accesos
-            Resp = DB.Backup(AP + "acc.moe", lblFldBackups.Caption)
+            Resp = DB.Backup(AP + "acc.moe", lblFldBackups)
     End Select
     
     If Resp = 0 Then
@@ -748,12 +748,10 @@ Private Sub cmdCambiarFld_Click()
             Exit Sub
         End If
         
-        lblFldBackups.Caption = PathArch
+        lblFldBackups = PathArch
     End If
     
     Set CM = Nothing
-    
-    GrabarFecha False
 End Sub
 
 Private Sub cmdCarpImg_Click()
@@ -913,7 +911,7 @@ End Sub
 Private Sub cmdRestaurar_Click(Index As Integer)
     Dim TmpArchivo As String, TmpDest As String, TmP2 As Long
     
-    If FSO.FolderExists(lblFldBackups.Caption) = False Then
+    If FSO.FolderExists(lblFldBackups) = False Then
         MsgBox "Seleccione una carpeta correcta de donde se pueda recuperar el backup", vbInformation, "Atención"
         Exit Sub
     End If
@@ -924,13 +922,13 @@ Private Sub cmdRestaurar_Click(Index As Integer)
     
     Select Case Index
         Case 0 'general
-            TmpArchivo = lblFldBackups.Caption + "dmbou.dv"
+            TmpArchivo = lblFldBackups + "dmbou.dv"
             TmpDest = lblUbicBDP
         Case 1 'contabilidad
-            TmpArchivo = lblFldBackups.Caption + "ctas.mdb"
+            TmpArchivo = lblFldBackups + "ctas.mdb"
             TmpDest = lblUbicBDC
         Case 2 'accesos
-            TmpArchivo = lblFldBackups.Caption + "acc.moe"
+            TmpArchivo = lblFldBackups + "acc.moe"
             TmpDest = AP
     End Select
     
@@ -1407,13 +1405,13 @@ Private Sub MostrarDatos()
     
     'algunas versiones no la tienen entonces
     If UBound(spFh) > 1 Then 'si esta
-        lblFldBackups.Caption = spFh(2)
+        lblFldBackups = spFh(2)
     Else
-        lblFldBackups.Caption = PFl  'ya la próxima queda grabada bien
+        lblFldBackups = PFl 'ya la próxima queda grabada bien
     End If
     
-    If FSO.FolderExists(lblFldBackups.Caption) = False Then
-        lblFldBackups.Caption = PFl
+    If FSO.FolderExists(lblFldBackups) = False Then
+        lblFldBackups = PFl
     End If
 End Sub
 
@@ -1470,6 +1468,7 @@ Private Sub GrabarFecha(EsBackup As Boolean)
     Hoy = Format(Date, "long date")
        
     If FSO.FileExists(mArchivo) = False Then
+        
         Set TE = FSO.CreateTextFile(mArchivo, True)
             TE.WriteLine Hoy + "|" + Hoy
         TE.Close
@@ -1491,7 +1490,7 @@ Private Sub GrabarFecha(EsBackup As Boolean)
     
     'le agrego la carpeta de backups siempre
     
-    tmpG = tmpG + "|" + lblFldBackups.Caption
+    tmpG = tmpG + "|" + lblFldBackups
         
     Set TE = FSO.OpenTextFile(mArchivo, ForWriting, True)
         TE.WriteLine tmpG

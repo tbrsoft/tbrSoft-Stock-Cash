@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#14.0#0"; "tbrControles.ocx"
+Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#15.0#0"; "tbrControles.ocx"
 Object = "{181111E6-07C8-4D47-8611-3BF038099354}#5.2#0"; "tbrFaroButton.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmEstRes 
    BackColor       =   &H00544B45&
    BorderStyle     =   3  'Fixed Dialog
@@ -734,50 +734,29 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub Form_Load()
-
-    On Local Error GoTo errRES
-
-    Terr.AnOtaR "EstRes-001"
     Dim IDcierre As Long
     
     cmbCuenta.ListIndex = 0
     UNeta = 0
     txtPesos = FormatCurrency(0)
     
-    Terr.AnOtaR "EstRes-002"
     AsientoCierre = PC.AsientoRNA
     
-    Terr.AnOtaR "EstRes-003"
     IDcierre = PC.GetUltIdCierreResultados
     
-    Terr.AnOtaR "EstRes-004", IDcierre
     'PC.ListarAsientos IDcierre, IDcierre, lvRNA
     'El asiento no se contabilizó aca va a mostrar como quedaría
     UNeta = LlenarAsiento(AsientoCierre)
-    
-    Terr.AnOtaR "EstRes-005", UNeta
     lblGB = "Ganancia Bruta: " + _
         FormatCurrency(PC.ABSSumarconSubcuentas(17) - _
             PC.ABSSumarconSubcuentas(18))
     
-    Terr.AnOtaR "EstRes-006", lblGB.Caption
     ResAcum = PC.ABSSumarconSubcuentas(16)
     lblRNA(0) = FormatCurrency(ResAcum)
     
-    Terr.AnOtaR "EstRes-007", lblRNA(0).Caption
     Saldo = ResAcum + UNeta
-    
-    Terr.AnOtaR "EstRes-008", Saldo
     lblRNA(1) = FormatCurrency(Saldo)
     lblSaldo = FormatCurrency(Saldo)
-    
-    Terr.AnOtaR "EstRes-009"
-    
-    Exit Sub
-    
-errRES:
-    Terr.AppendLog "", Terr.ErrToTXT(Err)
-    Resume Next
 End Sub
 
 Private Function LlenarAsiento(SpAsiento() As String) As Single

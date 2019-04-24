@@ -1,9 +1,9 @@
 VERSION 5.00
-Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#14.0#0"; "tbrControles.ocx"
-Object = "{DCB03D77-0A94-4AE8-9495-515B6968EEFB}#4.0#0"; "tbrFacura.ocx"
+Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#17.0#0"; "tbrControles.ocx"
+Object = "{DCB03D77-0A94-4AE8-9495-515B6968EEFB}#4.0#0"; "tbrfacura.ocx"
 Object = "{181111E6-07C8-4D47-8611-3BF038099354}#5.2#0"; "tbrFaroButton.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
 Begin VB.Form frmVENTAS 
    BackColor       =   &H00544B45&
    BorderStyle     =   3  'Fixed Dialog
@@ -84,10 +84,9 @@ Begin VB.Form frmVENTAS
    End
    Begin tbrFaroButton.fBoton cmdConceptos 
       Height          =   420
-      Left            =   9930
+      Left            =   9945
       TabIndex        =   57
-      Top             =   2670
-      Visible         =   0   'False
+      Top             =   2685
       Width           =   1845
       _ExtentX        =   3254
       _ExtentY        =   741
@@ -490,7 +489,7 @@ Begin VB.Form frmVENTAS
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Format          =   20905985
+      Format          =   60620801
       CurrentDate     =   39197
    End
    Begin MSComctlLib.ListView lvTodo 
@@ -1186,7 +1185,7 @@ Private Sub cmdImprimir_Click()
         FaCC.Texto(1) = tbrBuscadorC.GetLstSel
         FaCC.Texto(2) = txtDireccion
         FaCC.Texto(3) = txtCUIT
-        FaCC.Texto(4) = txtIVa
+        FaCC.Texto(4) = txtIVA
     Else
         FaCC.Texto(0) = ""
         FaCC.Texto(1) = "Consumidor Final"
@@ -1321,32 +1320,25 @@ Private Sub cmdSelProd_Click()
 End Sub
 
 Private Sub cmdTerminar_Click()
-    On Local Error GoTo errVta02
-    
-    Terr.AnOtaR "abar"
     Dim TmP As String
     Dim VtaFac As Single, tmp2 As String
     Dim I As Long, NroAsiento As Long
     
     If lvTodo.ListItems.Count = 0 Then MsgBox "No se registro ninguna venta": Exit Sub
-    Terr.AnOtaR "abas"
     If Not IsNumeric(txtDesc) Then
         MsgBox "Cargue correctamente los montos", vbInformation, "Atención"
         Exit Sub
     End If
     
-    Terr.AnOtaR "abat", txtIVAPorC.Text
     txtIVAPorC = ValidarNumeros(txtIVAPorC)
     
     'valido nro factura
     If DB.ContarReg("SELECT NroFactura FROM Facturas WHERE NroFactura = '" + _
         GetNroFac + "'") <> 0 Then
-        Terr.AnOtaR "abau"
         MsgBox "Factura ya ingresada", vbInformation, "Atención"
         txtLetFac.SetFocus
         Exit Sub
     End If
-    
     
     If chkContado Then
         TmP = "Al Contado"
@@ -1354,21 +1346,15 @@ Private Sub cmdTerminar_Click()
         TmP = "A Cuenta"
     End If
     
-    Terr.AnOtaR "abav", TmP
-    
     NroAsiento = PC.GetUltIDAsientoMasUno("LibroSubdiario")
     Desc = ValidarNumeros(txtDesc)
     txtDesc = FormatCurrency(Desc, , , , vbFalse)
-    
-    Terr.AnOtaR "abaw", NroAsiento, Desc
     CalcularTotal
     
-    Terr.AnOtaR "abax"
     If MsgBox("Está por registrar la venta " + TmP + vbCrLf + _
         "por un monto de " + txtTOTAL + " ¿Desea Continuar?", _
         vbYesNo + vbInformation, "Atencion") = vbNo Then Exit Sub
     
-    Terr.AnOtaR "abay"
     '1ro anoto la venta en facturas
     ' ¿A qué cliente?
     Dim IDC As Long
@@ -1382,14 +1368,12 @@ Private Sub cmdTerminar_Click()
         End If
     End If
     
-    Terr.AnOtaR "abaz", IDC
     DB.EXECUTE "INSERT INTO Facturas (NroFactura, Fecha, IdCliente, Pagado, Entregado) " + _
         "VALUES ('" + GetNroFac + "', #" + _
         stFechaSQL(DTFecha) + "#, " + CStr(IDC) + "," + _
         Replace(CStr(CSng(txtTOTAL)), ",", ".") + ", " + _
         CStr(chkEntregado.Value) + ")"
     
-    Terr.AnOtaR "abba"
     Dim ClsP As New clsProducto
     Dim X As String, IDVend As Long
     
@@ -1399,18 +1383,16 @@ Private Sub cmdTerminar_Click()
         IDVend = 0
     End If
     
-    Terr.AnOtaR "abbb", IDVend
     For I = 1 To lvTodo.ListItems.Count
         Dim IDp As String, PR As Single, Cto As Single
         Dim Cant As Long
-        Terr.AnOtaR "abbc", I
+        
         IDp = txtInLvW(lvTodo, I, 0)
         PR = CSng(txtInLvW(lvTodo, I, 3))
 '        Pr = CSng(DB.GetValInRS("Productos", "pventa", "ID=" + IDP))
         Cto = CSng(DB.GetValInRS("Productos", "pcosto", "ID=" + IDp))
         Cant = CLng(txtInLvW(lvTodo, I, 1))
         
-        Terr.AnOtaR "abbd", IDp, PR, Cto, Cant
         'si no discrimina iva le saco el iva al precio en la tabla ventas
         'mas abajo se va a agregar iva
         If chkIVA.Value = 0 And InStrRev(CFG.GetInfo(102, 3), txtLetFac, , vbTextCompare) <> 0 Then
@@ -1420,16 +1402,12 @@ Private Sub cmdTerminar_Click()
             CFG.ModificarNodo 7, , , , tmp2
             
             PR = PR / ((100 + CSng(tmp2)) / 100)
-            Terr.AnOtaR "abbe", PR
         End If
         
-        Terr.AnOtaR "abbf"
         'modifico stock solo si la mercaderia solo si se entrego
         If chkEntregado Then
             'solo modifico "StockOtraSuc" si es distinto de casa central, ya que
             'el stock del mismo se calcula por descarte
-            Terr.AnOtaR "abbg"
-            
             ClsP.ModificarStock CLng(IDp), -Cant, cmbSucursales, _
                 "Por Ventas Factura Nº " + CStr(GetNroFac)
         End If
@@ -1443,30 +1421,22 @@ Private Sub cmdTerminar_Click()
             Replace(CStr(PR), ",", ".") + _
             "," + Replace(CStr(Cto), ",", ".") + ", '" + _
             GetNroFac + "'," + CStr(IDVend) + ")"
-            
-        Terr.AnOtaR "abbh", X
-        
         DB.EXECUTE X
     Next I
     
-    Terr.AnOtaR "abbi"
     '------------------------------------------------------------------------------
     'grabo la configuracion de la proximo numero de factura ------------------------
     Dim HH As Boolean, Busca As Long, tmpBk As String, NoBk As String
     HH = False
     tmpBk = Right(GetNroFac, 8)
     NoBk = Left(GetNroFac, Len(GetNroFac) - 8)
-    
-    Terr.AnOtaR "abbj", NoBk
     If Not IsNumeric(tmpBk) Then
         Busca = 1
     Else
         Busca = CLng(tmpBk) + 1
     End If
     
-    Terr.AnOtaR "abbk", Busca
     Do While Not HH = True
-        Terr.AnOtaR "abbl"
         If DB.ContarReg("SELECT NroFactura FROM Facturas WHERE NroFactura = '" + _
             NoBk + String(8 - Len(CStr(Busca)), "0") + CStr(Busca) + "'") = 0 Then
             
@@ -1474,23 +1444,20 @@ Private Sub cmdTerminar_Click()
             Exit Do
 
         End If
-        Terr.AnOtaR "abbm", Busca
         Busca = Busca + 1
     Loop
-    Terr.AnOtaR "abbn"
     CFGBD.ModificarNodo 13, , , , NoBk + CStr(Busca)
         'grabo la ultima para la letra en particular -------------------------------
     Dim IdQ As Long
     
     IdQ = CFGBD.ExistePropiedad("Factura " + txtLetFac)
-    Terr.AnOtaR "abbo", IdQ
+    
     If IdQ = 0 Then
         CFGBD.AgregarNodo "13", "Factura " + txtLetFac, "", _
             txtSucFac + "-" + txtNroFac, 0
     Else
         CFGBD.ModificarNodo IdQ, 13, , , txtSucFac + "-" + CStr(Busca)
     End If
-    Terr.AnOtaR "abbp"
     '------------------------------------------------------------------------------
         
     Set ClsP = Nothing
@@ -1500,9 +1467,7 @@ Private Sub cmdTerminar_Click()
     
     If txtIVAPesos.Visible = False Then
         Iva = 0
-        Terr.AnOtaR "abbq"
     Else
-        Terr.AnOtaR "abbr", txtIVAPesos
         Iva = CSng(txtIVAPesos)
         'agrego renglon para el iva
         DB.EXECUTE "INSERT INTO Ventas (ID, Idproducto,Fecha, Cantidad,Precio, " + _
@@ -1510,12 +1475,9 @@ Private Sub cmdTerminar_Click()
             "VALUES (" + IdAutonum("Ventas") + ",-2,#" + stFechaSQL(Date) + _
             "#,1, " + Replace(CStr(Iva), ",", ".") + ",0,'" + CStr(GetNroFac) + _
             "'," + CStr(IDVend) + ")"
-        Terr.AnOtaR "abbs"
     End If
-    
-    Terr.AnOtaR "abbt"
+        
     If EsCero(Desc) = False Then
-        Terr.AnOtaR "abbu"
         'ahora si hay descuento lo agrego ------------------------------------------
         DB.EXECUTE "INSERT INTO Ventas (ID, Idproducto,Fecha, Cantidad,Precio," + _
             "Costo,IDVenta,ID3Vendedor) " + _
@@ -1524,17 +1486,15 @@ Private Sub cmdTerminar_Click()
             GetNroFac + "'," + CStr(IDVend) + ")"
     End If '-------------------------------------------------------------------------
     
-    Terr.AnOtaR "abbv"
     ' si tiene otros conceptos ------------------------------------------------------
     Dim strAs As String, strAs2 As String, Monto As Single
     strAs = "": strAs2 = "": Monto = 0
     If lvConceptos.Visible = True Then
-        Terr.AnOtaR "abbw"
         For I = 1 To lvConceptos.ListItems.Count
             strAs = strAs + lvConceptos.ListItems(I).Text 'con los nros de cuentas
             strAs2 = strAs2 + lvConceptos.ListItems(I).SubItems(2) 'con los montos
             Monto = Monto + CSng(lvConceptos.ListItems(I).SubItems(2))
-            Terr.AnOtaR "abbx", strAs, strAs2, Monto
+            
             'ademas agrego en Ventas
             DB.EXECUTE "INSERT INTO Ventas (ID, Idproducto,Fecha, Cantidad,Precio," + _
                 "Costo,IDVenta,ID3Vendedor) " + _
@@ -1546,20 +1506,15 @@ Private Sub cmdTerminar_Click()
                 ",", ".") + ",0,'" + _
                 GetNroFac + "'," + CStr(IDVend) + ")"
             
-            Terr.AnOtaR "abby"
             If I < lvConceptos.ListItems.Count Then
-                Terr.AnOtaR "abbz"
                 strAs = strAs + "/"
                 strAs2 = strAs2 + "/"
             End If
         Next I
-        Terr.AnOtaR "abca"
         'hagoel asiento nomas
         
         PC.Asiento "78", CStr(Monto), strAs, strAs2, "LibroSubDiario", , NroAsiento
-        Terr.AnOtaR "abcb"
     End If
-    Terr.AnOtaR "abcc"
     '--------------------------------------------------------------------------------
     VtaFac = CSng(txtSubTotal)
     Caja = VtaFac - Desc + Iva
@@ -1570,7 +1525,6 @@ Private Sub cmdTerminar_Click()
     'pero si se contabiliza hago lo siguiente
     
     If chkIVA.Value = 0 And InStrRev(CFG.GetInfo(102, 3), txtLetFac, , vbTextCompare) <> 0 Then
-        Terr.AnOtaR "abcd"
         Dim NoDisc As Single
         '1ro me aseguro que IVA sea numérico
         'el valor tm2 lo saca en el bucle For - Next
@@ -1581,18 +1535,13 @@ Private Sub cmdTerminar_Click()
         Iva = Caja - NoDisc
         VtaFac = Round(NoDisc, 4)
         
-        Terr.AnOtaR "abce", NoDisc, Iva, VtaFac
         'agrego el iva en la tabla compras
         DB.EXECUTE "INSERT INTO Ventas (ID, Idproducto,Fecha, Cantidad,Precio, " + _
             "Costo,IDVenta,ID3Vendedor) " + _
             "VALUES (" + IdAutonum("Ventas") + ",-2,#" + stFechaSQL(Date) + _
             "#,1, " + Replace(CStr(Iva), ",", ".") + ",0,'" + CStr(GetNroFac) + _
             "'," + CStr(IDVend) + ")"
-        
-        Terr.AnOtaR "abcf"
     End If
-    
-    Terr.AnOtaR "abcg"
     '--------------------------------------------------------------------------------
     
     'caja-dtos a ventas
@@ -1604,34 +1553,22 @@ Private Sub cmdTerminar_Click()
     'el asiento es negativo si es para añadir ya que puede haber datos por otros
     'conceptos comoretencion de gannancias
     
-    Terr.AnOtaR "abch"
-    
     'ctovta a mercaderias
     'saco cuanto es el costo de venta
     Dim Costo As Single
     Costo = DB.SumarProducto("Ventas", "Cantidad", "Costo", "IdVenta = '" + GetNroFac + "'")
     
-    Terr.AnOtaR "abci", Costo
-    
     PC.Asiento "18", CStr(Costo), "54", CStr(Costo), "LibroSubDiario", _
         "Costo Factura Nº " + CStr(GetNroFac)
     
-    Terr.AnOtaR "abcj", chkACuenta, chkContado
     If chkACuenta Then frmClientesMov.AbrirDatos GetNroFac, False, tbrBuscadorC.GetLstSel
     If chkContado Then
         If CFG.GetInfo(95, 4) = "Si" Then frmPago.AbrirDatos Caja, , "Ventas Factura Nº " + CStr(GetNroFac)
     End If
     
-    Terr.AnOtaR "abck"
     VtaFac = 0 'empiezo de vuelta
     
     Unload Me
-    
-    Exit Sub
-    
-errVta02:
-    Terr.AppendLog "vta0023", Terr.ErrToTXT(Err)
-    Resume Next
 End Sub
 
 Private Sub ImprimaNomas()
@@ -1676,26 +1613,20 @@ Private Sub Command1_Click()
 End Sub
 
 Private Sub Form_Activate()
-    Terr.AnOtaR "abaq"
-    tbrBuscadorC_Click
-    
+    tbrbuscadorc_Click
 End Sub
 
 Private Sub Form_Load()
-    On Local Error GoTo errVta
-    Terr.AnOtaR "abaa"
     Limpiar
-    Terr.AnOtaR "abdh"
+    
     DTFecha = Date
     chkIVA_Click
     chkCliente_Click
     cmbSucursales.Clear
     cmbSucursales.AddItem "CASA CENTRAL"
-    Terr.AnOtaR "abdi"
     CargarCombo cmbSucursales, "SELECT * FROM Sucursales", "Sucursal", , True
     cmbSucursales.ListIndex = 0 'si no hay sucursales no lo hace
     
-    Terr.AnOtaR "abab"
     tbrBuscadorC.Contrasena = Contrasena
     tbrBuscadorC.ArchivoMDB = ArchivoMDBPrincipal
     tbrBuscadorC.SqlSinLike = "SELECT TOP 50 Id, Nombre FROM Clientes WHERE ID >=0"
@@ -1703,7 +1634,6 @@ Private Sub Form_Load()
     tbrBuscadorC.CampoEnQueBuscar = "nombre/b,ID/n"
     tbrBuscadorC.ColumnasSepPorComasyParentesis = "Nombre(2460)/ID(700)"
     
-    Terr.AnOtaR "abac"
     tbrBuscadorP.Contrasena = Contrasena
     tbrBuscadorP.ArchivoMDB = ArchivoMDBPrincipal
     tbrBuscadorP.SqlSinLike = "SELECT TOP 50 ID, nProducto, pVenta, Stock FROM Productos WHERE ID>0"
@@ -1711,42 +1641,34 @@ Private Sub Form_Load()
     tbrBuscadorP.CampoEnQueBuscar = "id/n,nproducto/b,pVenta/$,Stock/n"
     tbrBuscadorP.ColumnasSepPorComasyParentesis = "ID(600)/Producto(2380)/" + _
         "Precio(1000)/Stock(600)"
-    
-    Terr.AnOtaR "abad"
+        
     'Cargo los Vendedores -------------------------------------------------
     Dim IdCuentas() As String
     
     IdCuentas = PC.GetCuentas(53)
-    Terr.AnOtaR "abae", IdCuentas(0)
+    
     cmbVendedor.Clear
     
     Dim I As Long
     
     For I = 1 To UBound(IdCuentas)
-        Terr.AnOtaR "abaf", I, IdCuentas(I)
         cmbVendedor.AddItem PC.GetNameCuenta(CLng(IdCuentas(I)))
     Next I
     
-    Terr.AnOtaR "abag"
     If cmbVendedor.ListCount > 0 Then cmbVendedor.ListIndex = 0
     ' --------------------------------------------------------------------
     'elijo el que este configurado
     Dim TmP As String
     TmP = CFG.GetInfo(14, 4)
-    Terr.AnOtaR "abah", TmP
     If TmP <> "" Then
-        Terr.AnOtaR "abai"
         If PC.ExisteNCuenta(TmP) <> 0 Then
-            Terr.AnOtaR "abaj"
             cmbVendedor = TmP
         End If
     End If
-    Terr.AnOtaR "abak"
     CFG.ModificarNodo 14, , , , cmbVendedor
     ' -----------------------------------------------------------------------------
     'Descuento por Venta Contado ---------------------------------------------------
     TmP = CFG.GetInfo(60, 4)
-    Terr.AnOtaR "abal", TmP
     If TmP = "" Then TmP = "0"
     If Not IsNumeric(TmP) Then TmP = "0"
     If CLng(TmP) <= 0 Then
@@ -1754,72 +1676,42 @@ Private Sub Form_Load()
     Else
         chkDtoVta.Value = 1
     End If
-    
-    Terr.AnOtaR "abam"
     'Otros Conceptos configurados
     Dim IdCF As Long
     
     IdCF = CFG.ExistePropiedad("Concepto 1")
-    Terr.AnOtaR "aban", IdCF
     
     If IdCF <> 0 Then 'con que exista un concepto es suficiente
         'lvConceptos.Visible = True
         cmdConceptos.Visible = True
     End If
     '---------------------------------------------------------------------------------
-    Terr.AnOtaR "abao"
     DiscriminaIVA = VerSiDiscriminaIVA
     tbrBuscadorP.Recargar
     '---------------------------------------------------------------------------------
     ActuTbrB = False:    ActuTbrBP = False
-    
-    Terr.AnOtaR "abap"
-    Exit Sub
-errVta:
-    Terr.AppendLog "vta009", Terr.ErrToTXT(Err)
-    Resume Next
 End Sub
 
 Private Sub Limpiar()
-    On Local Error GoTo errClean
-    
-    Terr.AnOtaR "abda"
     Dim TmpFac As String, SP() As String
     
     TmpFac = CFGBD.GetInfo(13, 4)
-    Terr.AnOtaR "abdb", TmpFac
-    
     SP = Split(TmpFac, "-")
     txtLetFac = UCase(SP(0))
     txtSucFac = String(4 - Len(SP(1)), "0") + SP(1)
     txtNroFac = String(8 - Len(SP(2)), "0") + SP(2)
     
-    Terr.AnOtaR "abde", txtLetFac, txtSucFac, txtNroFac
-    
-    txtCant.Text = "1"
-    Terr.AnOtaR "abdf1", CFG.GetInfo(10, 4)
-    txtPaga.Text = CStr(FormatCurrency(CSng(CFG.GetInfo(10, 4))))
-    Terr.AnOtaR "abdf2"
+    txtCant = "1"
+    txtPaga = FormatCurrency(CSng(CFG.GetInfo(10, 4)))
     lvTodo.ListItems.Clear
-    Terr.AnOtaR "abdf3"
-    txtPU.Text = CStr(FormatCurrency(0))
-    Terr.AnOtaR "abdf4"
-    txtPT.Text = CStr(FormatCurrency(0))
-    Terr.AnOtaR "abdf5"
-    lblClSelec.Caption = ""
+    txtPU = FormatCurrency(0)
+    txtPT = FormatCurrency(0)
+    lblClSelec = ""
     
-    Terr.AnOtaR "abdf"
     Subtotal = 0: Desc = 0
     txtSubTotal = FormatCurrency(Subtotal, , , , vbFalse)
     txtDesc = FormatCurrency(Desc, , , , vbFalse)
     
-    Terr.AnOtaR "abdg"
-    
-    Exit Sub
-    
-errClean:
-    Terr.AppendLog "errClean8273", Terr.ErrToTXT(Err)
-    Resume Next
 End Sub
 Private Function GetNroFac() As String
     GetNroFac = txtLetFac + "-" + _
@@ -1989,40 +1881,30 @@ Private Sub tbrbuscadorC_Change()
         Cl.AbrirDatos CLng(tbrBuscadorC.GetLstSel(1))
         txtDireccion = Cl.Direccion
         txtCUIT = Cl.CUIT
-        txtIVa = Cl.Iva
+        txtIVA = Cl.Iva
     Else
         lblClSelec = ""
         txtDireccion = ""
         txtCUIT = ""
-        txtIVa = ""
+        txtIVA = ""
     End If
 End Sub
 
-Private Sub tbrBuscadorC_Click()
-    Terr.AnOtaR "abfa"
+Private Sub tbrbuscadorc_Click()
     If tbrBuscadorC.GetLstSel <> "" Then
-        lblClSelec.Caption = "Cliente: " + tbrBuscadorC.GetLstSel
-        Terr.AnOtaR "abfb", lblClSelec.Caption
+        lblClSelec = "Cliente: " + tbrBuscadorC.GetLstSel
         
         Dim Cl As New clsCliente
         Cl.AbrirDatos CLng(tbrBuscadorC.GetLstSel(1))
-        Terr.AnOtaR "abfc", tbrBuscadorC.GetLstSel(1)
-        
-        txtDireccion.Text = Cl.Direccion
-        Terr.AnOtaR "abfd", txtDireccion.Text
-        txtCUIT.Text = Cl.CUIT
-        txtIVa.Text = Cl.Iva
-        
-        Terr.AnOtaR "abfe", txtCUIT.Text, txtIVa.Text
+        txtDireccion = Cl.Direccion
+        txtCUIT = Cl.CUIT
+        txtIVA = Cl.Iva
     Else
-        Terr.AnOtaR "abff"
-        lblClSelec.Caption = ""
-        txtDireccion.Text = ""
-        txtCUIT.Text = ""
-        txtIVa.Text = ""
+        lblClSelec = ""
+        txtDireccion = ""
+        txtCUIT = ""
+        txtIVA = ""
     End If
-    
-    Terr.AnOtaR "abfg"
 End Sub
 
 Private Sub VerActu()
@@ -2246,8 +2128,7 @@ Private Sub txtLetFac_LostFocus()
 End Sub
 
 Private Sub txtPaga_Change()
-    Terr.AnOtaR "abdf6"
-    lblVuelto.Caption = CStr(FormatCurrency(CalcularVuelto))
+    lblVuelto = FormatCurrency(CalcularVuelto)
 End Sub
 
 Private Sub txtPaga_GotFocus()
@@ -2259,34 +2140,19 @@ Private Sub txtPaga_LostFocus()
 End Sub
 
 Private Function CalcularVuelto() As Single
-    On Local Error GoTo ErrVTL
-    Terr.AnOtaR "abdf7", txtPaga.Text, txtTOTAL
-    
     Dim Vuelto As Single
     
-    If txtPaga.Text = "" Then txtPaga.Text = "0"
-    If txtTOTAL.Text = "" Then txtTOTAL.Text = "0"
-    
-    If Not IsNumeric(txtPaga.Text) Or Not IsNumeric(txtTOTAL.Text) Then
-        Terr.AnOtaR "abdf9"
+    If Not IsNumeric(txtPaga) Then
         Vuelto = 0
     Else
-        Vuelto = CSng(txtPaga.Text) - CSng(txtTOTAL.Text)
-        Terr.AnOtaR "abdf8", Vuelto
+        Vuelto = CSng(txtPaga) - CSng(txtTOTAL)
     End If
     
-    Terr.AnOtaR "abdf10", Vuelto
     If Vuelto > 0 Then
         CalcularVuelto = Vuelto
     Else
         CalcularVuelto = 0
     End If
-    
-    Exit Function
-ErrVTL:
-    Terr.AppendLog "errVTL232", Terr.ErrToTXT(Err)
-    Resume Next
-    
 End Function
 
 Private Sub CalcularTotal()
