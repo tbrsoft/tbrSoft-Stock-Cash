@@ -1,0 +1,34 @@
+por ahora ver que se puede hacer HASTA que se configure
+
+ 1. Activo
+ 2. Pasivo
+ 3. Perdidas
+ 4. Ganancias
+ 5. P.Neto
+ 6. Caja y Bancos
+15. Capital
+16. Resultados No Asignados
+17. Ventas
+18. Costo de Ventas
+19. Gastos de Comercializacion
+20. Gastos de Administracion"
+22. Otros Egresos
+23. RFyT
+30. Gastos o descuentos por Compras
+32. Diferencias de Caja
+33. Impuestos
+34. Servicios
+35. Diferencias de Stock
+37. Gastos de Financiacion"
+41. Proveedores
+46. Clientes
+50. Credito Fiscal (para el IVA)
+52. Cuenta Personal Socios
+53. Cuenta Personal Empleados
+54. Mercaderias en Inventario
+57. Resultado Eliminacion de cuenta
+76. Debito Fiscal (para el IVA)
+78. Caja
+
+
+NI SUS HIJOS!!!!!!!!!!!!!!!!!!!!!!!!! (subcuentas)
