@@ -1,0 +1,9 @@
+Informe de mejoras al sistema TBR Stock & Cash,
+(No es el último, sino el anterior)
+ 
+En (proveedores>>compras), no se puede cargar las correspondientes compras, debido que al armar la factura del proveedor, aparece un ERROR (run-time error “6” – over flow).-
+Se necesita que el sistema tenga una base de datos, que genere estadisticas por vendedor, para que se pueda visualizar de manera agil, la productividad de cada empleado, su nivel y cantidad de cierres, y su rendimiento con respecto a meses anteriores, y que estas estadísticas, tengan la posibilidad de ser exportados a una planilla de Excel.-
+En (productos>>stock por sucursales), se necesita que al momento de registrar un movimiento interno, se le pueda colocar un numero de remito interno, para llevar control de los movimientos, según estos documentos, y en otro icono, se pueda visualizar una lista de remitos internos, con sus respectivos números, y productos, y que esta planilla se pueda exportar a Excel, y se pueda imprimir. Claro esta que esta planilla, vamos a necesitar, que se pueda filtrar por fecha, y que tenga un buscador, por si necesita buscar un articulo en particular. Por otro lado, es muy necesario que en la selección de artículos, no sea necesario hacer un “clic”, sobre el producto, bastaría solamente con que este seleccionado en azul, y cambie con solo bajar o subir con el teclado.-
+En (productos>>historial móv. Productos) se necesita que tenga un buscador de artículos, y un filtro por fechas.-
+En (productos>>listado de productos), se necesita ver el stock por cada sucursal.-
+En todos los casos, se necesita que todas las pantallas se puedan maximizar, por comodidad, y agilidad del sistema y el trabajo.-

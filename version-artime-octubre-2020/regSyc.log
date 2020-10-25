@@ -1,0 +1,94 @@
+25/10/2020*08:34:04
+
+7,45 abat.0
+30797,45 abav.Al Contado
+30797,46 abaw.1.13
+30797,46 abax
+30803,78 abay
+30803,78 abaz.0
+30803,79 abba
+30803,79 abbb.0
+30803,79 abbc.1
+30803,79 abbd.43.130.103,9395.1
+30803,79 abbf
+30803,79 abbg
+30803,83 abbh.INSERT INTO Ventas (ID, Idproducto,Fecha, Cantidad,Precio,Costo,IDVenta,ID3Vendedor) VALUES (1265121, 43, #10/25/2020#,1, 130,103.9395, 'X-0004-00024621',0)
+30803,83 abbi
+30803,83 abbj.X-0004-
+30803,83 abbk.24622
+30803,83 abbl
+30803,83 abbn
+30803,84 abbo.82
+30803,85 abbp
+30803,85 abbq
+30803,85 abbt
+30803,85 abbu
+30803,86 abbv
+30803,86 abcc
+30803,86 abcg
+vta0023
+-2147217900:La instrucción INSERT INTO contiene el siguiente nombre de campo desconocido: 'NroFactura'. Asegúrese de que ha escrito correctamente el nombre y vuelva a intentar la operación.
+Microsoft JET Database Engine
+
+25/10/2020*08:34:04
+
+30797,46 abaw.1.13
+30797,46 abax
+30803,78 abay
+30803,78 abaz.0
+30803,79 abba
+30803,79 abbb.0
+30803,79 abbc.1
+30803,79 abbd.43.130.103,9395.1
+30803,79 abbf
+30803,79 abbg
+30803,83 abbh.INSERT INTO Ventas (ID, Idproducto,Fecha, Cantidad,Precio,Costo,IDVenta,ID3Vendedor) VALUES (1265121, 43, #10/25/2020#,1, 130,103.9395, 'X-0004-00024621',0)
+30803,83 abbi
+30803,83 abbj.X-0004-
+30803,83 abbk.24622
+30803,83 abbl
+30803,83 abbn
+30803,84 abbo.82
+30803,85 abbp
+30803,85 abbq
+30803,85 abbt
+30803,85 abbu
+30803,86 abbv
+30803,86 abcc
+30803,86 abcg
+30844,26 abch
+30844,27 abci.103,9395
+vta0023
+-2147217900:La instrucción INSERT INTO contiene el siguiente nombre de campo desconocido: 'NroFactura'. Asegúrese de que ha escrito correctamente el nombre y vuelva a intentar la operación.
+Microsoft JET Database Engine
+
+30875,62:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+31308,61:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+31470,92:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+31498,09:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+31578,6:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+31669,94:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+31789,98:aaab
+20.20.15
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+33044,04:aaab
+20.20.17
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+33154,54:aaab
+20.20.17
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\
+33283,02:aaab
+20.20.17
+D:\Programación - Míos\tbrSoft\tbrSoft Stock Cash codigo\2020 Artime\

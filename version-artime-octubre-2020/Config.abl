@@ -1,0 +1,29 @@
+1|0|Titulo||tbrStock & Cash - Software Administración Pequeñas Empresas|0
+2|0|Dias Vencimiento||30|0
+3|0|IdSucursalPredeterminada||1|0
+4|0|Tipos IVA||0|0
+5|0|Usa Envases||No|0
+6|0|Conf Cod Prod||No|0
+7|0|IVA Pred||0|0
+8|0|LetraFacturaCompraPred||C|0
+9|0|Impresion Codigo||ID_Nombre_Precio|0
+10|0|Calcular Vuelto||50|0
+11|0|Interes Mensual Pred||3|0
+12|0|Cantidad Maxima de Cuotas||36)|0
+14|0|Vendedor Predeterminado||Larry O.|0
+15|0|Caracteres C.Barras||t8r|0
+16|0|Cantidad de Mov Accesos||30|0
+17|0|Cantidad de Mov Productos||111|0
+18|0|FechaBup||32_05/06/2007|0
+19|0|StockMinimo||10|0
+20|0|Comisiones||0|0
+30|0|DatosTrabajoCliente||IDc_DetT_Ant_Fono_Ingr|0
+40|0|FormadePago||CC|0
+50|0|MgenVta||30|0
+60|0|Dto Vta Contado||10|0
+70|0|Ultimo Pago Financiera||1|0
+90|0|Tipo Usuario||Servidor|0
+95|0|Usa forma Contado||No|0
+100|0|Depende del Pais||1|0
+101|0|Facturas IVAC||AC|0
+102|0|Facturas IVAV||AB|0

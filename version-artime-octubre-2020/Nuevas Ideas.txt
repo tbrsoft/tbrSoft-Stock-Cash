@@ -1,0 +1,3 @@
+* Configurar Paquetes (tambien para comprar por caja y variar productos)
+* Mostrar Nuevos Clientes (ult 7 dias) para que todos sepan que no lo pongan en otros
+* Que se compatibilicen stock y socios la contabilidad con d

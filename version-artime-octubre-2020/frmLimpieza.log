@@ -1,0 +1,7 @@
+Línea 19: la propiedad Icon de frmLimpieza tenía una referencia a archivo no válida.
+Línea 123: la propiedad ItemData de cmbDias3 tenía una referencia a archivo no válida.
+Línea 125: la propiedad List de cmbDias3 tenía una referencia a archivo no válida.
+Línea 188: la propiedad ItemData de cmbDias2 tenía una referencia a archivo no válida.
+Línea 190: la propiedad List de cmbDias2 tenía una referencia a archivo no válida.
+Línea 261: la propiedad ItemData de cmbDias tenía una referencia a archivo no válida.
+Línea 263: la propiedad List de cmbDias tenía una referencia a archivo no válida.
