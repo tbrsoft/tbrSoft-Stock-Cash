@@ -72,12 +72,7 @@ Public Sub PutArchLic(Arch As String)
 End Sub
 
 Public Function GetLic() As nLIC
-    If InStr(AP, ":\dev\") Then
-        GetLic = Licencia3
-    Else
-        GetLic = MyLic
-    End If
-    
+    GetLic = MyLic
 End Function
 
 Private Sub Class_Initialize()

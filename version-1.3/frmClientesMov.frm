@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#14.0#0"; "tbrControles.ocx"
+Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#15.0#0"; "tbrControles.ocx"
 Object = "{181111E6-07C8-4D47-8611-3BF038099354}#5.2#0"; "tbrFaroButton.ocx"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmClientesMov 
    BackColor       =   &H00544B45&
    BorderStyle     =   3  'Fixed Dialog
@@ -215,7 +215,7 @@ Begin VB.Form frmClientesMov
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   20512769
+         Format          =   21037057
          CurrentDate     =   39196
       End
    End
@@ -581,13 +581,7 @@ Private Sub Form_Load()
     tbrBuscador1.ArchivoMDB = ArchivoMDBPrincipal
     
     txtVariacion = FormatCurrency(TotalFactura)
-    Dim CFG24 As String
-    CFG24 = CFG.GetInfo(2, 4)
-    If IsNumeric(CFG24) Then
-        DTVenc1.Value = Date + CLng(CFG24)
-    Else
-        Terr.AppendLog "NOFECHA-1231"
-    End If
+    DTVenc1 = Date + CLng(CFG.GetInfo(2, 4))
        
     If Right(mNombre, 1) = "*" Then
         EsFinanciera = True

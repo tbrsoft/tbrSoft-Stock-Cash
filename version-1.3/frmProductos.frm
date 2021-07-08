@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#15.0#0"; "tbrControles.ocx"
+Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#17.0#0"; "tbrControles.ocx"
 Object = "{181111E6-07C8-4D47-8611-3BF038099354}#5.2#0"; "tbrFaroButton.ocx"
 Begin VB.Form frmProductos 
    BackColor       =   &H00EFEFEF&
@@ -1717,11 +1717,11 @@ Private Sub LoadImgPV(iAR As String)
     'definbir el final segun corresponda
     Dim Ancho As Single, Alto As Single
     'probar si entraria con ancho maximo ...
-    Ancho = PicFondo.Width
+    Ancho = picFONDO.Width
     Alto = Ancho / Prop
-    If Alto > PicFondo.Height Then
+    If Alto > picFONDO.Height Then
         'cambiar todo! supuestamente si fallo el otro este no falla
-        Alto = PicFondo.Height
+        Alto = picFONDO.Height
         Ancho = Alto * Prop
     End If
     
@@ -1729,8 +1729,8 @@ Private Sub LoadImgPV(iAR As String)
     imgPV.Width = Ancho
     imgPV.Height = Alto
     
-    imgPV.Top = PicFondo.Height / 2 - imgPV.Height / 2
-    imgPV.Left = PicFondo.Width / 2 - imgPV.Width / 2
+    imgPV.Top = picFONDO.Height / 2 - imgPV.Height / 2
+    imgPV.Left = picFONDO.Width / 2 - imgPV.Width / 2
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -1926,7 +1926,7 @@ Private Sub txtIVA_LostFocus()
 End Sub
 
 Private Sub txtnProducto_GotFocus()
-    Command2.Default = True
+    command2.Default = True
 End Sub
 
 Private Sub txtnProductoM_GotFocus()

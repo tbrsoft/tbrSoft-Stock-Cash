@@ -1,7 +1,7 @@
 Type=Exe
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\stdole2.tlb#OLE Automation
 Reference=*\G{420B2830-E718-11CF-893D-00A0C9054228}#1.0#0#C:\WINDOWS\system32\scrrun.dll#Microsoft Scripting Runtime
-Reference=*\G{4AFFC9A0-5F99-101B-AF4E-00AA003F0F07}#9.0#0#C:\Archivos de programa\Microsoft Office\OFFICE11\MSACC.OLB#Microsoft Access 9.0 Object Library
+Reference=*\G{4AFFC9A0-5F99-101B-AF4E-00AA003F0F07}#9.0#0#C:\Archivos de programa\Microsoft Office\Office\MSACC9.OLB#Microsoft Access 9.0 Object Library
 Reference=*\G{00000201-0000-0010-8000-00AA006D2EA4}#2.1#0#C:\WINDOWS\system32\msado21.tlb#Microsoft ActiveX Data Objects 2.1 Library
 Reference=*\G{2A93CB2E-6FC5-4C3F-989B-58ED504E55B6}#8.0#0#C:\WINDOWS\system32\tbrAccesos.dll#tbrAccesos
 Reference=*\G{1CA564BD-D53D-4860-B897-C695812E387D}#f.0#0#C:\WINDOWS\system32\tbrArbol.dll#tbrArbol
@@ -21,7 +21,7 @@ HelpContextID="0"
 CompatibleMode="0"
 MajorVer=1
 MinorVer=0
-RevisionVer=59
+RevisionVer=54
 AutoIncrementVer=1
 ServerSupportFiles=0
 VersionCompanyName="zuliani"

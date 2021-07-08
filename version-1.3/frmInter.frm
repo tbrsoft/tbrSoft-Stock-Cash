@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#15.0#0"; "tbrControles.ocx"
+Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#17.0#0"; "tbrControles.ocx"
 Object = "{181111E6-07C8-4D47-8611-3BF038099354}#5.2#0"; "tbrFaroButton.ocx"
 Begin VB.Form frmInter 
    BackColor       =   &H00E6DFD5&

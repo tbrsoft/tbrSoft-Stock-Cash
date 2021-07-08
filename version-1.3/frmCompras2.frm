@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#14.0#0"; "tbrControles.ocx"
+Object = "{A7FBD38D-2930-49E3-B60C-9E0202D84549}#15.0#0"; "tbrControles.ocx"
 Object = "{181111E6-07C8-4D47-8611-3BF038099354}#5.2#0"; "tbrFaroButton.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmCompras 
    BackColor       =   &H00544B45&
    BorderStyle     =   3  'Fixed Dialog
@@ -464,7 +464,7 @@ Begin VB.Form frmCompras
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Format          =   20971521
+      Format          =   61210625
       CurrentDate     =   39197
    End
    Begin tbrControles.MouTextBox txtSucFac 
@@ -901,21 +901,13 @@ Private Sub cmdAgProd_Click()
 End Sub
 
 Private Sub cmdAgregar_Click()
-    On Local Error GoTo errAddPr
-        
-    Terr.AnOtaR "caba"
-        
     If tbrBuscador1.GetLstSel = "" Then
         MsgBox "No eligio ningún producto"
         Exit Sub
     End If
     
-    Terr.AnOtaR "cabb", txtPrecio.Text, txtCant.Text
-    
     Precio = ValidarNumeros(txtPrecio)
     txtPrecio = FormatCurrency(Precio, , , , vbFalse)
-    
-    Terr.AnOtaR "cabc", Precio
     
     Select Case Precio
         Case 0
@@ -925,9 +917,7 @@ Private Sub cmdAgregar_Click()
             MsgBox "Ingrese sólo valores positivos", vbInformation, "Atención"
             Exit Sub
     End Select
-    
-    Terr.AnOtaR "cabd", lvFactura.ListItems.Count + 1, txtCant.Text
-    
+            
     Dim TmP As Long
             
     TmP = lvFactura.ListItems.Count + 1
@@ -939,46 +929,26 @@ Private Sub cmdAgregar_Click()
     lvFactura.ListItems(TmP).SubItems(2) = FormatCurrency(CStr(Precio / CSng(txtCant)), 4, , , vbFalse)
     lvFactura.ListItems(TmP).SubItems(3) = FormatCurrency(Precio, 4, , , vbFalse)
     
-    Terr.AnOtaR "cabe"
-    
     CalcularIVA
-    
-    Terr.AnOtaR "cabf"
     
     cmdSel.Default = True
     txtCant = "1"
     txtPrecio = FormatCurrency(0)
     tbrBuscador1.Text = ""
     tbrBuscador1.SetFocus
-    
-    Terr.AnOtaR "cabg"
-    
-    Exit Sub
-    
-errAddPr:
-    Terr.AppendLog "ErrAddPrCPR", Terr.ErrToTXT(Err)
-    MsgBox "Error al agregar el producto, envie registro a tbrSoft"
-    
 End Sub
 
 Private Sub CalcularTotal()
-
-    On Local Error GoTo errCALC
-
     Dim I As Long
     
     ToTal = 0
     
     For I = 1 To lvFactura.ListItems.Count
-        Terr.AnOtaR "caak", lvFactura.ListItems(I).SubItems(3)
         ToTal = ToTal + CSng(lvFactura.ListItems(I).SubItems(3))
     Next
     
-    Terr.AnOtaR "caal", ToTal
-    
     If txtDeMas.Visible = True Then
         If IsNumeric(txtDeMas) Then
-            Terr.AnOtaR "caam", txtDeMas.Text
             DeMas = CSng(txtDeMas)
         Else
             DeMas = 0
@@ -986,8 +956,6 @@ Private Sub CalcularTotal()
     Else
         DeMas = 0
     End If
-    
-    Terr.AnOtaR "caan", DeMas, txtIVAPesos.Text, txtIVAPesos.Visible
     
     If txtIVAPesos.Visible = True Then
         If IsNumeric(txtIVAPesos) Then
@@ -999,26 +967,13 @@ Private Sub CalcularTotal()
         IVApesos = 0
     End If
     
-    Terr.AnOtaR "caao", IVApesos, lvConc2.Visible
-    
     If lvConc2.Visible = True Then
         For I = 1 To lvConc2.ListItems.Count
-            Terr.AnOtaR "caap", lvConc2.ListItems(I).SubItems(2), ToTal
             ToTal = ToTal + CSng(lvConc2.ListItems(I).SubItems(2))
         Next I
     End If
     
-    Terr.AnOtaR "caaq", ToTal, DeMas, IVApesos
-    
     lblTotal = FormatCurrency(ToTal + DeMas + IVApesos, , , , vbFalse)
-    
-    Terr.AnOtaR "caar", lblTotal.Caption
-    
-    Exit Sub
-errCALC:
-    Terr.AppendLog "ErrCalcCPR", Terr.ErrToTXT(Err)
-    MsgBox "Error al calcular la compra, envie registro a tbrSoft"
-    
 End Sub
 
 Private Sub cmdBorrarConc_Click()
@@ -1076,10 +1031,6 @@ Private Sub cmdGrabar_Click()
 End Sub
 
 Private Sub cmdPagar_Click()
-    On Local Error GoTo errOkCPR
-    
-    Terr.AnOtaR "cabp", lvFactura.ListItems.Count
-    
     If lvFactura.ListItems.Count <= 0 Then Exit Sub
     
     Dim NroAsiento As Long
@@ -1089,39 +1040,28 @@ Private Sub cmdPagar_Click()
     Dim IDp As Long, PrecioAj As Single, Cant As Long
     Dim stDeb As String, DebP As String
     
-    Terr.AnOtaR "cabq", chkContado.Value
-    
     If chkContado Then
         TmP = "Al Contado"
     Else
         TmP = "A Cuenta"
     End If
     
-    Terr.AnOtaR "cabr"
     NroAsiento = PC.GetUltIDAsientoMasUno("LibroSubDiario")
     DeMas = ValidarNumeros(txtDeMas)
     IVApesos = CSng(txtIVAPesos)
     
-    Terr.AnOtaR "cabs", NroAsiento, DeMas, IVApesos
     'valido nro factura
     If DB.ContarReg("SELECT NroFactura FROM FacturaCompra WHERE NroFactura = '" + _
         GetNroFac + "'") <> 0 Then
-        
-        Terr.AnOtaR "cabu"
-        
         MsgBox "Factura ya ingresada", vbInformation, "Atención"
         txtLetFac.SetFocus
         Exit Sub
     End If
     
-    Terr.AnOtaR "cabt"
-    
     If MsgBox("Está por registrar la compra " + TmP + " de " + _
         FormatCurrency(ToTal + DeMas + IVApesos) + _
         " a " + UCase(nProveedor) + ", ¿Son correctos los datos?", _
         vbOKCancel + vbInformation, "Atencion") = vbCancel Then Exit Sub
-    
-    Terr.AnOtaR "cabv"
     
     If txtDeMas.Visible = False Or chkCosto = False Then
         'esto pasa cuando no agrego a la factura la recarga
@@ -1131,14 +1071,9 @@ Private Sub cmdPagar_Click()
         DifP = 1 + DeMas / (ToTal)
     End If
     
-    Terr.AnOtaR "cabw", DifP
-    
      'ahora vamos con los numerajes!!!!!!!!
     
     If chkGasto = True Then 'eligio mandarlo como gasto aparte
-    
-        Terr.AnOtaR "cabx"
-        
         stDeb = stDeb + "/30"
         DebP = CStr(ToTal) + "/" + CStr(DeMas)
         'registro la compra (el gasto va aparte de la compra)
@@ -1148,9 +1083,6 @@ Private Sub cmdPagar_Click()
             "'," + Replace(CStr(ToTal + IVApesos), ",", ".") + ", " + _
             CStr(chkEntregado) + ", 0)"
     Else
-    
-        Terr.AnOtaR "caby"
-    
         'registro la compra
         DB.EXECUTE "INSERT INTO FacturaCompra (NroFactura,Fecha,Proveedor,Pagado," + _
             "Entregado, EsPedido) " + "VALUES ('" + GetNroFac + "', #" + _
@@ -1159,12 +1091,7 @@ Private Sub cmdPagar_Click()
             CStr(chkEntregado) + ", 0)"
     End If
     
-    Terr.AnOtaR "cabz"
-    
     For I = 1 To lvFactura.ListItems.Count
-    
-        Terr.AnOtaR "caca", I, lvFactura.ListItems(I).SubItems(1)
-    
         IDp = DB.GetValInRS("Productos", "ID", "nProducto = '" + _
             lvFactura.ListItems(I).SubItems(1) + "'", False)
         PrecioAj = CSng(lvFactura.ListItems(I).SubItems(2)) * DifP
@@ -1177,8 +1104,6 @@ Private Sub cmdPagar_Click()
         'cargo el detalle de compra
         clsC.CargarCompraDt GetNroFac, DTFecha, nProveedor, IDp, Cant, Cant * PrecioAj
     Next I
-    
-    Terr.AnOtaR "cacb"
     
     'si tiene iva --------------------------------------------------------------------
     Dim Iva As Single
@@ -1194,16 +1119,11 @@ Private Sub cmdPagar_Click()
             cmbProveedores + "')"
     End If
     
-    Terr.AnOtaR "cacc", Iva
-    
     ' si tiene otros conceptos ------------------------------------------------------
     Dim strAs As String, strAs2 As String, Monto As Single
     strAs = "": strAs2 = "": Monto = 0
     If lvConc2.Visible = True Then
         For I = 1 To lvConc2.ListItems.Count
-        
-            Terr.AnOtaR "cacj", I, lvConc2.ListItems(I).Text, lvConc2.ListItems(I).SubItems(2)
-        
             strAs = strAs + lvConc2.ListItems(I).Text 'con los nros de cuentas
             strAs2 = strAs2 + lvConc2.ListItems(I).SubItems(2) 'con los montos
             Monto = Monto + CSng(lvConc2.ListItems(I).SubItems(2))
@@ -1217,12 +1137,10 @@ Private Sub cmdPagar_Click()
                 strAs2 = strAs2 + "/"
             End If
         Next I
-        'hago el asiento nomas
+        'hagoel asiento nomas
         
         PC.Asiento strAs, strAs2, "78", CStr(Monto), "LibroSubDiario", , NroAsiento
     End If
-    
-    Terr.AnOtaR "cack"
     '--------------------------------------------------------------------------------
     
     Set clsC = Nothing
@@ -1233,14 +1151,11 @@ Private Sub cmdPagar_Click()
     stDeb = "54"
     DebP = CStr(ToTal + DeMas - Monto)
     
-    Terr.AnOtaR "cacl", DebP
-    
     If txtIVAPesos.Visible = True Then
         stDeb = stDeb + "/50"
         DebP = DebP + "/" + CStr(IVApesos)
     End If
     
-    Terr.AnOtaR "cacm"
     PC.Asiento stDeb, DebP, "78", CStr(ToTal + DeMas + IVApesos - Monto), "LibroSubDiario", _
         "Compra Factura Nº " + CStr(GetNroFac), -NroAsiento
     'negativo para que agregue este a un asiento ya abierto
@@ -1250,13 +1165,7 @@ Private Sub cmdPagar_Click()
         If CFG.GetInfo(95, 4) = "Si" Then frmPago.AbrirDatos ToTal + DeMas + IVApesos, False, "Compras Factura Nº " + CStr(GetNroFac)
     End If
     
-    Terr.AnOtaR "cacn"
     Unload Me
-
-    Exit Sub
-errOkCPR:
-    Terr.AppendLog "Err-OKCPR", Terr.ErrToTXT(Err)
-    MsgBox "Error al registrar compra, envie registro a tbrSoft"
 
 End Sub
 
@@ -1392,10 +1301,6 @@ Private Sub Form_Load()
 End Sub
 
 Public Function AbrirDatos(Optional NroFactura As String = "Nada")
-        
-    On Local Error GoTo errAbrirCpr
-    
-    Terr.AnOtaR "caab", NroFactura
     
     If NroFactura = "Nada" Then
         Nuevo = True
@@ -1404,18 +1309,11 @@ Public Function AbrirDatos(Optional NroFactura As String = "Nada")
         Nuevo = False
         nProveedor = DB.GetValInRS("FacturaCompra", "Proveedor", "NroFactura = '" + _
             NroFactura + "'", True)
-        
-        Terr.AnOtaR "caac", nProveedor
-        
         Dim FacDatos() As String
         FacDatos = Split(NroFactura, "-")
-        
         txtLetFac = FacDatos(0)
         txtSucFac = FacDatos(1)
         txtNroFac = Left(FacDatos(2), 8)
-        
-        Terr.AnOtaR "caad", txtLetFac.Text, txtSucFac.Text, txtNroFac.Text
-        
     End If
     
     ToTal = 0 '???? no se porque pero se guarda el valor de la factura vieja
@@ -1426,47 +1324,31 @@ Public Function AbrirDatos(Optional NroFactura As String = "Nada")
     txtIVAPesos = FormatCurrency(0)
     
     If Nuevo = False Then 'abre un pedido grabado}
-        Terr.AnOtaR "caae"
         CargarComboLV lvFactura, "SELECT Productos.nProducto, CompraDetalle.Cantidad, " + _
             "CompraDetalle.PrecioTotal " + _
             "FROM Productos INNER JOIN CompraDetalle ON Productos.ID = " + _
             "CompraDetalle.IDproducto WHERE NroFactura = '" + NroFactura + "'", _
             "Cantidad/n,nProducto,PrecioTotal/$"
         
-        Terr.AnOtaR "caaf"
         'completo los precios unitarios dividiendo PT/cant
         Dim X As Long
         
         For X = 1 To lvFactura.ListItems.Count
-            Terr.AnOtaR "caag", X, lvFactura.ListItems(X).SubItems(2), lvFactura.ListItems(X).SubItems(3), lvFactura.ListItems(X).Text
-            
             lvFactura.ListItems(X).SubItems(3) = lvFactura.ListItems(X).SubItems(2)
             lvFactura.ListItems(X).SubItems(2) = CSng(lvFactura.ListItems(X).SubItems(3)) / _
                 CLng(lvFactura.ListItems(X).Text)
-            
             lvFactura.ListItems(X).SubItems(2) = FormatCurrency( _
                 Round(lvFactura.ListItems(X).SubItems(2), 4), , , , vbFalse)
         Next X
 
-        Terr.AnOtaR "caah", NroFactura
-        
         'ahora borro todos los registros viejos
         DB.EXECUTE "DELETE FROM FacturaCompra WHERE NroFactura= '" + NroFactura + "'"
         
     End If
     
-    Terr.AnOtaR "caai"
     CalcularTotal
     
-    Terr.AnOtaR "caaj"
     Me.Show 1
-    
-    Exit Function
-    
-errAbrirCpr:
-    Terr.AppendLog "ErrAbrirCPR", Terr.ErrToTXT(Err)
-    MsgBox "Error al abrir la compra, envie registro a tbrSoft"
-    
     
 End Function
 
